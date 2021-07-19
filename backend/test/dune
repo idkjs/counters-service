@@ -1,0 +1,18 @@
+(env
+ (dev
+  (flags (:standard -w -27-26))))
+
+(executable
+ (modes byte exe)
+ (name test)
+ (public_name test)
+  (package counteratdgen)
+ (libraries counteratdgen stdio alcotest))
+
+(rule
+ (alias runtest)
+ (deps
+  (:< test.exe)
+  (glob_files resources/*))
+ (action
+  (run %{<})))

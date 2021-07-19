@@ -1,0 +1,55 @@
+{
+  "name": "counters",
+  "reason": {
+    "react-jsx": 3
+  },
+  "generators": [
+    {
+      "name": "atd_t",
+      "command": "npx atdgen -t $in"
+    },
+    {
+      "name": "atd_bs",
+      "command": "npx atdgen -bs $in"
+    }
+  ],
+  "sources": [
+    { "dir": "src", "subdirs": true },
+    {
+      "dir": "shared",
+      "generators": [
+        {
+          "name": "atd_t",
+          "edge": ["Counter_t.ml", "Counter_t.mli", ":", "Counter.atd"]
+        },
+        {
+          "name": "atd_bs",
+          "edge": ["Counter_bs.ml", "Counter_bs.mli", ":", "Counter.atd"]
+        }
+      ]
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "commonjs",
+      "in-source": true
+    }
+  ],
+  "suffix": ".bs.js",
+  "namespace": true,
+  "bs-dependencies": [
+    "reason-react",
+    "bs-css-emotion",
+    "bs-css",
+    "bs-faker",
+    "bs-fetch",
+    "bs-webapi",
+    "@ahrefs/bs-atdgen-codec-runtime"
+  ],
+  "ppx-flags": ["@davesnx/styled-ppx/ppx"],
+  "warnings": {
+    "number": "-16-8",
+    "error": "+5"
+  },
+  "bsc-flags": ["-bs-super-errors", "-bs-no-version-header"]
+}

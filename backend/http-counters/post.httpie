@@ -1,0 +1,8 @@
+
+echo '{"name":"moment1","value":1}'| http --json POST 'http://localhost:3003/counter'
+//
+echo '{"name":"moment2","value":2}'| http POST 'http://localhost:3003/counter'
+//
+http --json POST localhost:3003/counter
+    name='me'
+    value="1"

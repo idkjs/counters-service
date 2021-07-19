@@ -1,0 +1,19 @@
+(executable
+ (name Counters)
+ (public_name Counters)
+ (package counters)
+ (libraries
+  console.lib
+  pastel.lib
+  lib
+  core
+  opium
+  yojson
+  uuidm
+  logs.fmt
+  caqti
+  caqti-lwt
+  ppx_rapper_lwt
+  caqti-driver-postgresql)
+ (preprocess
+  (pps ppx_yojson ppx_deriving_yojson ppx_rapper)))

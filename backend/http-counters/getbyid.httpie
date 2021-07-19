@@ -1,0 +1,1 @@
+http  --follow --timeout 3600 GET 'localhost:3003/counter/f7f1ba88-cd92-4b57-9243-230eff75bcde'

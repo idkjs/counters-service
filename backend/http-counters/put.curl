@@ -1,0 +1,4 @@
+
+curl --location --request PUT 'localhost:3003/counters/155e84c4-be5a-49eb-9448-88f03ca1ec7d' \
+--header 'Content-Type: text/plain' \
+--data-raw '{"body":"somebody updated this"}'

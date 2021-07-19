@@ -1,0 +1,59 @@
+{
+  "name": "try-styled-ppx",
+  "version": "1.0.0",
+  "description": "",
+  "author": "davesnx",
+  "license": "MIT",
+  "homepage": "https://github.com//try-styled-ppx",
+  "bugs": {
+    "url": "https://github.com//try-styled-ppx/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//try-styled-ppx.git"
+  },
+  "dependencies": {
+    "@ahrefs/bs-atdgen-codec-runtime": "^2.0.1",
+    "@davesnx/styled-ppx": "1.5.6",
+    "bs-css-emotion": "^3.0.0",
+    "bs-fetch": "^0.6.2",
+    "bs-webapi": "^0.19.1",
+    "isomorphic-fetch": "^3.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "reason-react": "^0.9.1",
+    "taco-ui": "^0.1.2",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@jchavarri/bs-atdgen-generator": "^0.0.9",
+    "bs-faker": "^2.1.0",
+    "bs-platform": "9.0.2",
+    "concurrently": "^6.0.0",
+    "esbuild": "^0.10.2",
+    "esm": "^3.2.25",
+    "live-server": "^1.2.1",
+    "ynpx": "^2.0.10"
+  },
+  "scripts": {
+    "atdgen": "atdgen -t shared/Counter.atd && atdgen -bs shared/Counter.atd",
+    "atdgen-clean": "cd shared && rm Counter_t.mli Counter_t.ml Counter_j.mli Counter_j.ml Counter_bs.mli Counter_bs.ml",
+    "bundle": "esbuild ./src/Index.bs.js --outfile=www/js/bundle.js --bundle --sourcemap --target=chrome58,firefox57,safari11,edge16 --define:process.env.NODE_ENV='\"development\"'",
+    "bundle:watch": "yarn bundle --watch --color=true",
+    "dev-server": "PORT=5000 live-server ./www --host=localhost",
+    "dev": "yarn dev-server && yarn bundle:watch",
+    "bs:build": "NINJA_ANSI_FORCED=1 bsb -make-world -clean-world",
+    "bs:watch": "NINJA_ANSI_FORCED=1 bsb -make-world -clean-world -w",
+    "bs:clean": "bsb -clean-world",
+    "start": "yarn clean; yarn bs:clean; concurrently --names re,db,dev,js --kill-others yarn:bs:watch yarn:dev-server yarn:bundle:watch",
+    "bundle:prod": "yarn bundle --minify --define:process.env.NODE_ENV='\"production\"'",
+    "clean": "rm -rf www/js",
+    "format": "bsrefmt --in-place */**/*.re */*.re"
+  },
+  "browser": {
+    "fs": false,
+    "tty": false,
+    "constants": false,
+    "child_process": false
+  }
+}

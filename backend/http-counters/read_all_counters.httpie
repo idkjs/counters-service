@@ -1,0 +1,23 @@
+// get health
+http GET 'localhost:3003'
+// get all counters
+http  --follow --timeout 3600 GET 'localhost:3003/counters'
+// get counter by id
+http  --follow --timeout 3600 GET 'localhost:3003/counter/33777e6a-279b-4f76-a2de-b597e58ab76c'
+
+// update counter by id
+echo '{"value":7}'| http --json PUT 'localhost:3003/counter/33777e6a-279b-4f76-a2de-b597e58ab76c'
+// increment counter
+ http POST 'localhost:3003/counter/increment/33777e6a-279b-4f76-a2de-b597e58ab76c'
+
+// create counter
+
+echo '{"name":"POST","value":0}'| http --json POST  'localhost:3003/counter'
+echo '{"name":"DELETE ME","value":22}'| http --json POST  'localhost:3003/counter'
+// create counter no value
+
+echo '{"name":"JustName"}'| http --json POST  'localhost:3003/counter'
+echo '{"name":"DELETE ME","value":22}'| http --json POST  'localhost:3003/counter'
+
+// delete counter
+http  --follow --timeout 3600 DELETE 'localhost:3003/counter/97a2f8c2-396a-4c76-96b1-20e6797af8bd'

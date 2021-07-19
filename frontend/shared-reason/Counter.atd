@@ -1,0 +1,12 @@
+(* type id = string wrap <ocaml module="Transform.Id"> *)
+type id = string wrap <ocaml module="Transform.Id">
+
+type counter = {
+  ?id : id option;
+  name : string;
+  value : int;
+}
+
+type counters = {
+  counters: counter list;
+}

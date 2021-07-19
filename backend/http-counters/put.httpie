@@ -1,0 +1,1 @@
+echo '{"value":6}'| http --json PUT 'localhost:3003/counter/33777e6a-279b-4f76-a2de-b597e58ab76c'

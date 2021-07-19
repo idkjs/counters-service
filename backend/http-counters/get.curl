@@ -1,0 +1,3 @@
+curl --location --request GET 'localhost:3003/counters' \
+--header 'Content-Type: text/plain' \
+--data-raw '{"user":"me","body":"somebody"}'

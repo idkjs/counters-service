@@ -1,0 +1,19 @@
+(library
+ (name counteratdgen)
+ (public_name counteratdgen)
+ (libraries atdgen yojson)
+ (flags :standard -w -32))
+
+(rule
+ (targets types_j.ml types_j.mli)
+ (deps
+  (:< types.atd))
+ (action
+  (run atdgen -j %{<})))
+
+(rule
+ (targets types_t.ml types_t.mli)
+ (deps
+  (:< types.atd))
+ (action
+  (run atdgen -t %{<})))
