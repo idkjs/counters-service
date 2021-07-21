@@ -1,5 +1,5 @@
 
-let (let.await) = Lwt.bind;
+let ( let* ) = Lwt.bind;
 [@deriving yojson]
 type counter = {
   id: string,

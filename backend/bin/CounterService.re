@@ -1,6 +1,6 @@
 open Opium;
 
-let (let.await) = Lwt.bind;
+let ( let* ) = Lwt.bind;
 
 let not_found = Response.make(~status=`Not_found, ()) |> Lwt.return;
 

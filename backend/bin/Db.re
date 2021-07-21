@@ -1,5 +1,5 @@
 // open Opium;
-let (let.await) = Lwt.bind;
+let ( let* ) = Lwt.bind;
 
 exception Query_failed(string);
 let connection_uri = "postgresql://postgres:password@localhost:5432";
