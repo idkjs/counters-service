@@ -52,7 +52,7 @@ let create_counter = {
   (~name, ~value=0,()) => {
     let id = Uuidm.create(`V4) |> Uuidm.to_string;
     let counter = {id, name, value};
-    let.await () = query(counter) |> Db.dispatch;
+    let* () = query(counter) |> Db.dispatch;
     Lwt.return(counter);
   };
 };

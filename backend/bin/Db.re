@@ -23,7 +23,7 @@ let migrate_counters = [%rapper
   )
 ];
 let dispatch = f => {
-  let.await result = Caqti_lwt.Pool.use(f, pool);
+  let* result = Caqti_lwt.Pool.use(f, pool);
   switch (result) {
   | Ok(data) => Lwt.return(data)
   | Error(error) => Lwt.fail(Query_failed(Caqti_error.show(error)))
