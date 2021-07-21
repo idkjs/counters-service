@@ -76,9 +76,9 @@ let key: Opium.Context.key(db_pool(Caqti_error.t)) =
 /* Initiate a connection pool and add it to the app environment */
 let middleware = app => {
   let pool = connect();
-  let filter = (handler, req: Opium.Request.t) => {
-    let env = Opium.Context.add(key, pool, req.Opium.Request.env);
-    handler({...req, env});
+  let filter = (handler, request: Opium.Request.t) => {
+    let env = Opium.Context.add(key, pool, request.Opium.Request.env);
+    handler({...request, env});
   };
 
   let middleware = Rock.Middleware.create(~name="DB connection pool", ~filter);
